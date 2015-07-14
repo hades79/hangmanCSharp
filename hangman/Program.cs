@@ -15,7 +15,7 @@ namespace hangman
             Console.Title = "Hangman ver 0.1 - Athanasios Emmanouilidis";
             Console.Beep();
 
-            String[] arrayOfSecretWords = File.ReadAllLines("listOfWords.txt");
+            String[] arrayOfSecretWords = File.ReadAllLines("c:listOfWords.txt");
             int lives = 3;
 
             while (lives > 0) {
