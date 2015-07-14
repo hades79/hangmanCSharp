@@ -13,7 +13,6 @@ namespace hangman
         {
 
             Console.Title = "Hangman ver 0.1 - Athanasios Emmanouilidis";
-            Console.Beep();
 
             String[] arrayOfSecretWords = File.ReadAllLines("listOfWords.txt");
             int lives = 3;
@@ -56,6 +55,7 @@ namespace hangman
 
         static void gameInit(String[] arrayOfSecretWords, int lives) 
         {
+            Console.Beep(1400, 100); Console.Beep(1500, 100); Console.Beep(1600, 100); Console.Beep(1400, 100); Console.Beep(1500, 100); Console.Beep(1600, 100);
 
             Boolean win = false;
             List<Char> listOfValidGuesses = new List<Char>();
