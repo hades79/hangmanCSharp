@@ -125,12 +125,12 @@ namespace hangman
                 {
                     Console.WriteLine("'" + inputString + "' does not exist in the word!\n");
                     Console.Beep(500, 500);
-                    totalTries--;
-                    Console.WriteLine("\nTries left: " + totalTries);
-                    if (!listOfInvalidGuesses.Contains(inputString))
-                    {
+                    if (!listOfInvalidGuesses.Contains(inputString)) {
                         listOfInvalidGuesses.Add(inputString);
+                        totalTries--;
                     }
+                    Console.WriteLine("\nTries left: " + totalTries);
+
                 }
 
             }
