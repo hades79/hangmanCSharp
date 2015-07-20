@@ -10,7 +10,7 @@ namespace hangman
     class Program
     {
         static void Main(string[] args)
-        {
+        { 
 
             Console.Title = "Hangman ver 0.1 - Athanasios Emmanouilidis";
 
