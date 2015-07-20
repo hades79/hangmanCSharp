@@ -86,7 +86,7 @@ namespace hangman
             int totalTries = randomSecretWord.Length * 2;
 
             Console.WriteLine("\n-----------------------------------------------\n");
-            Console.WriteLine("Welcome to Hangman ver 0.9.\n");
+            Console.WriteLine("Welcome to Hangman ver 0.9.0.2\n");
             Console.WriteLine("Copyright 2015 - Athanasios Emmanouilidis\n");
             Console.WriteLine("http://athanasiosem.github.io\n");
             Console.WriteLine("Please send bug reports and comments to\nathanasiosem@inbox.com\n");
