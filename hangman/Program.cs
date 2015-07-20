@@ -68,7 +68,7 @@ namespace hangman
             }
             else if (input != 'n' || input != 'N' || input != 'y' || input != 'y')
             {
-                Console.WriteLine("Wrong keypress ! Press Y or N. \n");
+                Console.WriteLine("\nWrong keypress ! Press Y or N. \n");
                 playAgainQuestion(arrayOfSecretWords);
             }
         }
