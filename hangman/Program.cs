@@ -12,7 +12,7 @@ namespace hangman
         static void Main(string[] args)
         { 
 
-            Console.Title = "Hangman ver 0.9 - Athanasios Emmanouilidis";
+            Console.Title = "Hangman ver 0.9.0.1 - Athanasios Emmanouilidis";
 
             String[] arrayOfSecretWords = File.ReadAllLines("listOfWords.txt");
             int lives = 3;
@@ -23,7 +23,7 @@ namespace hangman
 
         }
 
-        static string ReplaceAll(string input, char target)
+        static string ReplaceAllCharsInAString(string input, char target)
         {
             StringBuilder sb = new StringBuilder(input.Length);
             for (int i = 0; i < input.Length; i++)
@@ -34,7 +34,7 @@ namespace hangman
             return sb.ToString();
         }
 
-        static void printGuessedWordWithTabs(String word)
+        static void printStringWithTabs(String word)
         {
             for (int character = 0; character <= word.Length - 1; character++)
             {
@@ -42,7 +42,7 @@ namespace hangman
             }
         }
 
-        static void printInvalidGuesses(List<Char> list)
+        static void printListOfChars(List<Char> list)
         {
 
             foreach (Char x in list)
@@ -62,7 +62,7 @@ namespace hangman
             List<Char> listOfInvalidGuesses = new List<Char>();
             // Choose randomly a secret word from the array
             String randomSecretWord = arrayOfSecretWords[new Random().Next(0, arrayOfSecretWords.Length)];
-            String wordGuessedTillNow = ReplaceAll(randomSecretWord, '_');
+            String wordGuessedTillNow = ReplaceAllCharsInAString(randomSecretWord, '_');
             int totalTries = randomSecretWord.Length * 2;
 
             Console.WriteLine("\n-----------------------------------------------\n");
@@ -77,9 +77,9 @@ namespace hangman
             while (win == false && (totalTries != 0) && (lives >= 0))
             {
 
-                printGuessedWordWithTabs(wordGuessedTillNow);
+                printStringWithTabs(wordGuessedTillNow);
 
-                Console.WriteLine("\n\nInvalid guesses:"); printInvalidGuesses(listOfInvalidGuesses);
+                Console.WriteLine("\n\nInvalid guesses:"); printListOfChars(listOfInvalidGuesses);
 
                 Console.WriteLine("\n\nPlease enter a letter:\n"); 
                 Char inputString = Console.ReadKey().KeyChar;
@@ -137,7 +137,7 @@ namespace hangman
 
             }
 
-            printGuessedWordWithTabs(wordGuessedTillNow);
+            printStringWithTabs(wordGuessedTillNow);
             if (win == true) { Console.WriteLine("\n\nYou Won!!!!! ");
             Console.Beep(1000, 300); Console.Beep(1100, 300); Console.Beep(1200, 300);
 
