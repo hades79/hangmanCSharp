@@ -9,14 +9,15 @@ namespace hangman
     class Program
     {
         static void Main(string[] args)
-        { 
+        {
 
-            Console.Title = "Hangman ver 0.9.0.1 - Athanasios Emmanouilidis";
+            Console.Title = "Hangman ver 0.9.0.2 - Athanasios Emmanouilidis";
 
             String[] arrayOfSecretWords = File.ReadAllLines("listOfWords.txt");
             int lives = 3;
 
-            while (lives > 0) {
+            while (lives > 0)
+            {
                 gameInit(arrayOfSecretWords, lives);
             }
 
@@ -51,8 +52,28 @@ namespace hangman
 
         }
 
+        static void playAgainQuestion(String[] arrayOfSecretWords)
+        {
+            Console.WriteLine("Do you want to play again? Y/N");
 
-        static void gameInit(String[] arrayOfSecretWords, int lives) 
+            Char input = Console.ReadKey().KeyChar;
+            if (input == 'n' || input == 'N')
+            {
+                Console.WriteLine("Bye bye!");
+                System.Environment.Exit(1);
+            }
+            else if (input == 'y' || input == 'Y')
+            {
+                gameInit(arrayOfSecretWords, 3);
+            }
+            else if (input != 'n' || input != 'N' || input != 'y' || input != 'y')
+            {
+                Console.WriteLine("Wrong keypress ! Press Y or N. \n");
+                playAgainQuestion(arrayOfSecretWords);
+            }
+        }
+
+        static void gameInit(String[] arrayOfSecretWords, int lives)
         {
             Console.Beep(1400, 100); Console.Beep(1500, 100); Console.Beep(1600, 100); Console.Beep(1400, 100); Console.Beep(1500, 100); Console.Beep(1600, 100);
 
@@ -80,7 +101,7 @@ namespace hangman
 
                 Console.WriteLine("\n\nInvalid guesses:"); printListOfChars(listOfInvalidGuesses);
 
-                Console.WriteLine("\n\nPlease enter a letter:\n"); 
+                Console.WriteLine("\n\nPlease enter a letter:\n");
                 Char inputString = Console.ReadKey().KeyChar;
 
                 Console.WriteLine("\nYou wrote '" + inputString + "'.\n");
@@ -88,7 +109,7 @@ namespace hangman
                 if (listOfInvalidGuesses.Contains(inputString))
                 {
                     Console.WriteLine("You already entered this letter and its not correct !\n");
-                    Console.Beep(500,500);
+                    Console.Beep(500, 500);
 
                 }
                 else if (listOfValidGuesses.Contains(inputString))
@@ -126,7 +147,8 @@ namespace hangman
                 {
                     Console.WriteLine("'" + inputString + "' does not exist in the word!\n");
                     Console.Beep(500, 500);
-                    if (!listOfInvalidGuesses.Contains(inputString)) {
+                    if (!listOfInvalidGuesses.Contains(inputString))
+                    {
                         listOfInvalidGuesses.Add(inputString);
                         totalTries--;
                     }
@@ -137,28 +159,33 @@ namespace hangman
             }
 
             printStringWithTabs(wordGuessedTillNow);
-            if (win == true) { Console.WriteLine("\n\nYou Won!!!!! ");
-            Console.Beep(1000, 300); Console.Beep(1100, 300); Console.Beep(1200, 300);
+            if (win == true)
+            {
+                Console.WriteLine("\n\nYou Won!!!!! ");
+                Console.Beep(1000, 300); Console.Beep(1100, 300); Console.Beep(1200, 300);
 
-            gameInit(arrayOfSecretWords, lives);
+                gameInit(arrayOfSecretWords, lives);
             }
-            else if(win == false)
+            else if (win == false)
             {
 
                 Console.WriteLine("\n\nYou lost! The word was '" + randomSecretWord + "'. \n.");
                 Console.Beep(500, 300); Console.Beep(500, 300); Console.Beep(500, 300);
                 lives--;
-                if (lives == 0) 
+                if (lives == 0)
                 {
-                    Console.WriteLine("Game over!");
+                    Console.WriteLine("Game over!\n");
                     Console.Beep(500, 300); Console.Beep(500, 300); Console.Beep(500, 300);
-                    System.Environment.Exit(1);
+                    playAgainQuestion(arrayOfSecretWords);
                 }
-                gameInit(arrayOfSecretWords, lives);
-
+                else
+                {
+                    gameInit(arrayOfSecretWords, lives);
+                }
             }
             Console.ReadLine();
         }
+
 
     }
 }
