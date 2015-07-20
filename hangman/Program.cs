@@ -12,7 +12,7 @@ namespace hangman
         static void Main(string[] args)
         { 
 
-            Console.Title = "Hangman ver 0.1 - Athanasios Emmanouilidis";
+            Console.Title = "Hangman ver 0.9 - Athanasios Emmanouilidis";
 
             String[] arrayOfSecretWords = File.ReadAllLines("listOfWords.txt");
             int lives = 3;
@@ -65,10 +65,12 @@ namespace hangman
             String wordGuessedTillNow = ReplaceAll(randomSecretWord, '_');
             int totalTries = randomSecretWord.Length * 2;
 
-            Console.WriteLine("\n----------------------------------------------\n");
-            Console.WriteLine("Welcome to Hangman ver 0.1.\n");
+            Console.WriteLine("\n-----------------------------------------------\n");
+            Console.WriteLine("Welcome to Hangman ver 0.9.\n");
             Console.WriteLine("Copyright 2015 - Athanasios Emmanouilidis\n");
-            Console.WriteLine("----------------------------------------------\n");
+            Console.WriteLine("http://athanasiosem.github.io\n");
+            Console.WriteLine("Please send bug reports and comments to\nathanasiosem@inbox.com\n");
+            Console.WriteLine("-----------------------------------------------\n");
             Console.WriteLine("You have " + lives + " lives.\n");
             Console.WriteLine("Secret word is: ");
 
